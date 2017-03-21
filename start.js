@@ -1,18 +1,18 @@
 const bodyParser = require('body-parser')
 const express = require('express')
-const logger = reqiure('morgan')
+const logger = require('morgan')
 const useragent = require('express-useragent')
 const path = require('path')
 const http = require('http')
 
 // define environment
-cosnt debug = process.env.NODE_ENV !== 'production'
+const debug = process.env.NODE_ENV !== 'production'
 
 // define config provider
 const config = require('./config')
 
 // define port
-cosnt port = config.get('port')
+const port = config.get('port')
 
 // define express app
 const app = express()
@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(useragent.express())
 
 // enable api middleware
-require('./api')
+require('./api').call(app)
 
 // define http server
 const server = http.createServer(app)

@@ -5,7 +5,7 @@ const notFound = require('./404.js')
 const resolver = require('./resolver')
 
 // define api routers
-const action = require('./sign')
+const sign = require('./sign')
 const users = require('./users')
 
 module.exports = function() {

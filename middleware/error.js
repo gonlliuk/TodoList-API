@@ -1,4 +1,4 @@
-const ErrorHandler = status => {
+const ErrorHandler = (status) => {
     switch(status) {
         
         // http errors

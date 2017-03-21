@@ -26,6 +26,11 @@ const userSchema = new mongoose.Schema({
 	updatedAt: Date,
 	name: String,
 	birthday: Date,
+	uuid: {
+        type: String,
+        unique: true,
+        index: true
+    },
 	email: {
 		type: String,
 		required: true,
@@ -62,7 +67,7 @@ userSchema.methods.auth = function(password, ip, useragent, callback) {
 	if (!password) return callback(error(REQUEST_PASSWORD_REQUIRED))
 
 	// get last active session
-	let session this.sessions.filter(session => {
+	let session = this.sessions.filter(session => {
 		return session.ip === ip && session.source === useragent.source
 	}).pop()
 

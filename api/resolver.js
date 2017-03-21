@@ -21,15 +21,16 @@ const Resolver = (req, res, next) => {
 		return errorResponser(res, error(REQUEST_TOKEN_REQUIRED))
 
 	User.findOne({ 'sessions.token': token })
-		.select('-hash - __v')
+		.select('-hash -__v')
 		.exec((err, user) => {
+			console.log(err)
 			if (err)
 				return errorResponser(res, error(DB_MONGOOSE_ON_FIND))
 
 			if (!user)
 				return errorResponser(res, error(REQUEST_TOKEN_WRONG))
 
-			const current = user.sessions[current].current = true
+			const current = user.sessions.findIndex(session => session.token === token)
 			user.sessions[current].current = true
 				
 			// move session to first

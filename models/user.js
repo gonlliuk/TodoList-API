@@ -4,6 +4,7 @@ const uuid = require('shortid')
 
 // define suggested schemas
 const sessionSchema = require('../schemas/session')
+const todoSchema = require('../schemas/todo')
 
 // define middlewares
 const config = require('../config');
@@ -40,7 +41,8 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	sessions: [sessionSchema]
+	sessions: [sessionSchema],
+	todos: [todoSchema]
 })
 
 userSchema.virtual('password').set(function(value) {

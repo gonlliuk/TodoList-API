@@ -23,7 +23,6 @@ const Resolver = (req, res, next) => {
 	User.findOne({ 'sessions.token': token })
 		.select('-hash -__v')
 		.exec((err, user) => {
-			console.log(err)
 			if (err)
 				return errorResponser(res, error(DB_MONGOOSE_ON_FIND))
 

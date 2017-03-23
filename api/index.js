@@ -7,6 +7,7 @@ const resolver = require('./resolver')
 // define api routers
 const sign = require('./sign')
 const users = require('./users')
+const todos = require('./todos')
 
 module.exports = function() {
 
@@ -18,6 +19,7 @@ module.exports = function() {
 
 	// define self based routes
 	this.use('/users', users)
+	this.use('/todos', todos)
 
 	// define unresolved routes
 	this.use('*', notFound)

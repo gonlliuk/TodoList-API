@@ -41,7 +41,7 @@ router.patch('/:uuid', (req, res) => {
     const data = requestCleaner(req.body, ['hash', '_id', '__v', 'sessions', 'plan'])
 
     // find user by uuid, team and update it
-    User.findOneAndUpdate({ uuid: req.params.uuid }, data)
+    User.findOneAndUpdate({ uuid: req.params.uuid }, data, { new: true })
 	    .exec((err, user) => {
 	        if (err)
 	            return errorResponser(res, error(DB_MONGOOSE_ON_FIND_AND_UPDATE))

@@ -96,23 +96,6 @@ const ErrorHandler = (status) => {
             }
         }
 
-        // permission errors
-        case 'PERMISSION_NOT_ROOT_USER': {
-            return {
-                status: 403,
-                message: 'Permitted. Not root user.'
-            }
-        }
-
-        // mailgun errors
-        case 'MAILGUN_RESPONSE_DISCARD': {
-            return {
-                status: 500,
-                message: 'Mailgun discarded.'
-            }
-        }
-
-
         // validation errors
         case 'VALIDATE_PASSWORD_REQUIRED': {
             return {
